@@ -4,7 +4,11 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="Resources - Certified Secure Researcher™">
+<BaseLayout
+	title="Resources & Training Materials | Certified Secure Researcher™"
+	description="Download compliance templates, training guides, NSPM-33 documentation, and API integrations. Access webinars, videos, and certification support materials for research security."
+	keywords="research security resources, compliance templates, NSPM-33 guide, training materials, ORCiD integration, certification support, research security training"
+>
 	<Header currentPage="resources" />
 
 	<!-- Page Hero -->
@@ -15,8 +19,32 @@ import Footer from '../components/Footer.astro';
 		</div>
 	</section>
 
-	<!-- Resource Categories -->
+	<!-- Featured Video -->
 	<section class="section">
+		<div class="container">
+			<h2 class="section-title">Featured Resource</h2>
+			<div class="featured-video">
+				<div class="video-wrapper">
+					<video controls poster="/Assets/ORCID__Research_Fingerprint.mp4#t=0.1">
+						<source src="/Assets/ORCID__Research_Fingerprint.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+				</div>
+				<div class="video-info">
+					<h3>ORCID: Research Fingerprint</h3>
+					<p>Understanding the implications of ORCID integration for research security. This video explores how ORCID identifiers create a comprehensive research fingerprint and what institutions need to know about protecting researcher information while maintaining compliance.</p>
+					<div class="video-tags">
+						<span class="video-tag">ORCID</span>
+						<span class="video-tag">Research Security</span>
+						<span class="video-tag">Compliance</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Resource Categories -->
+	<section class="section bg-light">
 		<div class="container">
 			<div class="resource-categories">
 				<div class="category-card">
@@ -278,6 +306,67 @@ import Footer from '../components/Footer.astro';
 	}
 
 	.section-title {
+		text-align: center;
+		font-size: 1.75rem;
+		margin-bottom: 2rem;
+		color: var(--dark);
+		font-weight: 700;
+	}
+
+	.featured-video {
+		background: white;
+		border: 3px solid var(--primary);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+		overflow: hidden;
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.video-wrapper {
+		position: relative;
+		width: 100%;
+		background: var(--dark);
+	}
+
+	.video-wrapper video {
+		width: 100%;
+		display: block;
+	}
+
+	.video-info {
+		padding: 2rem;
+		border-top: 3px solid var(--accent);
+	}
+
+	.video-info h3 {
+		font-size: 1.5rem;
+		color: var(--dark);
+		margin-bottom: 1rem;
+	}
+
+	.video-info p {
+		color: var(--gray);
+		line-height: 1.7;
+		margin-bottom: 1.5rem;
+	}
+
+	.video-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.video-tag {
+		background: var(--primary);
+		color: white;
+		padding: 0.25rem 0.75rem;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.section-title-categories {
 		text-align: center;
 		font-size: 1.75rem;
 		margin-bottom: 2rem;

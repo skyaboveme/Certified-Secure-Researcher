@@ -4,7 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="Blog - Certified Secure Researcher™">
+<BaseLayout
+	title="Research Security Blog | Certified Secure Researcher™"
+	description="Expert insights on research security compliance, IP theft prevention, NSPM-33 requirements, and ORCID security. Stay updated on federal regulations and certification best practices."
+	keywords="research security blog, IP theft prevention, NSPM-33 compliance, ORCiD security, research compliance updates, federal research regulations, insider threat prevention"
+	type="blog"
+>
 	<Header currentPage="blog" />
 
 	<!-- Page Hero -->
@@ -19,6 +24,21 @@ import Footer from '../components/Footer.astro';
 	<section class="section">
 		<div class="container">
 			<div class="blog-grid">
+				<article class="blog-card featured">
+					<div class="blog-image">
+						<div class="placeholder-image">💰</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-meta">
+							<span class="blog-category">Risk Assessment</span>
+							<span class="blog-date">November 17, 2025</span>
+						</div>
+						<h3>The $44 Million Question: What's Your Research Security Blind Spot?</h3>
+						<p>Organizations saved $44 million by identifying security blind spots. Discover the 5 critical vulnerabilities costing research institutions millions.</p>
+						<a href="/blog/research-security-blind-spots" class="read-more">Read More →</a>
+					</div>
+				</article>
+
 				<article class="blog-card featured">
 					<div class="blog-image">
 						<div class="placeholder-image">🚨</div>

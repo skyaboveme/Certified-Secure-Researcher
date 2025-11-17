@@ -1,9 +1,22 @@
 ---
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
+	type?: string;
+	keywords?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "Certified Secure Researcher™ (CSR) provides official research security certification linked to ORCiD identifiers. Streamline compliance with federal funding agency standards and institutional security requirements.",
+	image = "/Images/CSR.png",
+	type = "website",
+	keywords = "research security, CSR certification, ORCiD, NSPM-33, research compliance, federal funding, intellectual property protection, research integrity, secure researcher certification"
+} = Astro.props;
+
+const siteUrl = "https://certifiedsecureresearcher.com";
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 ---
 
 <!DOCTYPE html>
@@ -13,10 +26,73 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="author" content="IPTalons" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={`${siteUrl}${image}`} />
+		<meta property="og:site_name" content="Certified Secure Researcher™" />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${siteUrl}${image}`} />
+
+		<!-- Additional SEO -->
+		<meta name="theme-color" content="#1e3a5f" />
+		<meta name="apple-mobile-web-app-title" content="CSR" />
+		<meta name="application-name" content="Certified Secure Researcher" />
+
+		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-		<title>{title}</title>
+
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Certified Secure Researcher",
+			"alternateName": "CSR",
+			"url": "https://certifiedsecureresearcher.com",
+			"logo": "https://certifiedsecureresearcher.com/Images/CSR.png",
+			"description": "Official research security certification program linking researcher credentials to ORCiD identifiers for federal compliance.",
+			"foundingDate": "2024",
+			"areaServed": "Worldwide",
+			"parentOrganization": {
+				"@type": "Organization",
+				"name": "IPTalons",
+				"url": "https://iptalons.com"
+			},
+			"sameAs": [],
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"contactType": "customer service",
+				"email": "support@certifiedsecureresearcher.com",
+				"availableLanguage": "English"
+			},
+			"offers": {
+				"@type": "Offer",
+				"name": "CSR Certification",
+				"description": "Research security certification for compliance with federal funding requirements"
+			}
+		}
+		</script>
 	</head>
 	<body>
 		<slot />

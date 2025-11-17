@@ -42,6 +42,13 @@
 
 		<div class="footer-bottom">
 			<div class="footer-divider"></div>
+			<div class="social-links">
+				<a href="https://www.facebook.com/profile.php?id=61583418186781" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+					</svg>
+				</a>
+			</div>
 			<p class="copyright">© 2025 Certified Secure Researcher™. All rights reserved.</p>
 			<p class="disclaimer">This certification program is an independent third-party service and is not affiliated with any government agency.</p>
 		</div>
@@ -123,6 +130,31 @@
 		height: 1px;
 		background: var(--border);
 		margin-bottom: 2rem;
+	}
+
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.social-links a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		background: var(--primary);
+		color: white;
+		border-radius: 0;
+		transition: all 0.2s;
+	}
+
+	.social-links a:hover {
+		background: var(--accent);
+		color: var(--dark);
+		transform: translateY(-2px);
 	}
 
 	.copyright {

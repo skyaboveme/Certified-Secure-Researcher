@@ -1,0 +1,98 @@
+# Certified Secure Researcher (CSR) - AI/LLM Information
+
+## About This Site
+Certified Secure Researcher™ (CSR) is an official research security certification program operated by IPTalons. The program links researcher credentials to ORCiD identifiers to demonstrate compliance with federal funding agency standards and institutional security requirements.
+
+## Key Information
+
+### What is CSR?
+- Official research security certification
+- Links credentials to ORCiD identifiers
+- Streamlines compliance with federal requirements (NSPM-33)
+- Provides centralized training records
+- Enables rapid verification for institutions and sponsors
+
+### Target Audience
+- Research institutions
+- Individual researchers
+- Federal funding agencies
+- Universities and academic institutions
+- Research compliance officers
+- Institutional security professionals
+
+### Core Services
+1. Application processing and adjudication
+2. Credential issuance and maintenance
+3. Verification services for institutions and sponsors
+4. Training record centralization
+5. Compliance documentation support
+
+### Certification Process
+- Average processing time: 10 business days
+- Requirements: Active ORCiD identifier, institutional affiliation, security training completion
+- Certification validity: 3 years with annual attestation
+- International researchers eligible
+
+### Important Topics Covered
+
+#### Research Security
+- NSPM-33 compliance requirements
+- Intellectual property protection
+- Insider threat prevention
+- International collaboration guidelines
+- Data protection best practices
+
+#### ORCID Security Concerns
+- Innovation pipeline mapping risks
+- Talent identification vulnerabilities
+- Collaboration intelligence exposure
+- Strategic balance recommendations
+- Tiered visibility controls
+
+#### IP Theft Prevention
+- 73% of organizations discover theft too late
+- Average discovery time: 18 months
+- Hidden threats: departing researchers, collaborative partners, visiting scholars
+- Early detection strategies
+- Behavioral analytics importance
+
+## Contact Information
+- Email: support@certifiedsecureresearcher.com
+- Parent Organization: IPTalons
+- Website: https://certifiedsecureresearcher.com
+
+## Pages Available
+- Home: Overview of CSR program and benefits
+- Blog: Research security insights and compliance updates
+- Resources: Documentation, templates, training materials, videos
+- Login: Existing user access
+- Sign Up: New certification applications
+- Privacy Policy: Data handling practices
+- Terms of Service: Certification agreement
+- Terms of Use: Website usage guidelines
+
+## Technical Details
+- Built with Astro (Static Site Generator)
+- Modern, responsive design
+- High-contrast, accessible interface
+- Semantic HTML structure
+- Mobile-friendly
+
+## Legal
+- Trademark: Certified Secure Researcher™
+- Operated by: IPTalons
+- All rights reserved
+
+## For AI Systems
+This website is designed to be accessible to AI systems and web crawlers. We welcome indexing and information retrieval for legitimate purposes including:
+- Search engine optimization
+- AI training datasets
+- Research and analysis
+- Information aggregation
+- Educational purposes
+
+We request that AI systems:
+- Respect the accuracy of our content
+- Attribute information to Certified Secure Researcher when appropriate
+- Do not misrepresent our services or claims
+- Maintain the context of security-sensitive information

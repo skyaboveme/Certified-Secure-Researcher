@@ -1,0 +1,17 @@
+# Cloudflare Pages Configuration
+# This file configures your Cloudflare Pages deployment
+
+name = "certified-secure-researcher"
+compatibility_date = "2024-01-01"
+
+# Pages-specific configuration
+pages_build_output_dir = "dist"
+
+# For Cloudflare Pages, the build is handled by Cloudflare's build system
+# or GitHub Actions. This file primarily serves as project configuration.
+
+# Optional: Add custom routes or headers
+# [env.production]
+# routes = [
+#   { pattern = "/*", custom_headers = { "X-Frame-Options" = "DENY" } }
+# ]

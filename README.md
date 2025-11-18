@@ -36,7 +36,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## 🚀 Deployment
 
-This project is configured for automated deployment to Cloudflare Workers. See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed setup instructions.
+This project is configured for automated deployment to Cloudflare Pages. See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed setup instructions.
 
 ### Quick Deployment Setup
 
@@ -47,4 +47,4 @@ This project is configured for automated deployment to Cloudflare Workers. See [
 ## 👀 Want to learn more?
 
 - [Astro Documentation](https://docs.astro.build)
-- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
+- [Cloudflare Pages Documentation](https://developers.cloudflare.com/pages/)

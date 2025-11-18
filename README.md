@@ -1,10 +1,6 @@
-# Astro Starter Kit: Minimal
+# Certified Secure Researcher
 
-```sh
-npm create astro@latest -- --template minimal
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Official website for Certified Secure Researcher - empowering academic researchers with comprehensive cybersecurity protection.
 
 ## 🚀 Project Structure
 
@@ -38,6 +34,17 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## 🚀 Deployment
+
+This project is configured for automated deployment to Cloudflare Workers. See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed setup instructions.
+
+### Quick Deployment Setup
+
+1. Add GitHub secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`
+2. Push to `main` branch
+3. Deployment happens automatically via GitHub Actions
+
 ## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Astro Documentation](https://docs.astro.build)
+- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)

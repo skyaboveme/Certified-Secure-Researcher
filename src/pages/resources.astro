@@ -27,10 +27,12 @@ import Footer from '../components/Footer.astro';
 			<!-- CSR Introduction Video -->
 			<div class="featured-video">
 				<div class="video-wrapper">
-					<video controls preload="auto" controlslist="nodownload">
-						<source src="/images/certified-secure-researcher.mp4" type="video/mp4">
-						Your browser does not support the video tag. Please <a href="/images/certified-secure-researcher.mp4" style="color: var(--accent);">download the video</a> to watch it.
-					</video>
+					<iframe
+						src="https://www.youtube.com/embed/IqjOi01QECo"
+						title="Introduction to Certified Secure Researcher"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen>
+					</iframe>
 				</div>
 				<div class="video-info">
 					<h3>Introduction to Certified Secure Researcher</h3>
@@ -350,12 +352,13 @@ import Footer from '../components/Footer.astro';
 		aspect-ratio: 16 / 9;
 	}
 
-	.video-wrapper video {
+	.video-wrapper iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
-		display: block;
-		object-fit: contain;
-		background: #000;
+		border: none;
 	}
 
 	.video-info {

@@ -138,6 +138,19 @@ import Footer from '../components/Footer.astro';
 		</div>
 	</section>
 
+	<!-- Video Section -->
+	<section class="section bg-light">
+		<div class="container">
+			<h2 class="section-title">Introduction to CSR Certification</h2>
+			<div class="video-container">
+				<video controls poster="/images/Certified Secure Researcher.mp4#t=0.1">
+					<source src="/images/Certified Secure Researcher.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+			</div>
+		</div>
+	</section>
+
 	<!-- Why Institutions -->
 	<section class="section" id="program">
 		<div class="container">
@@ -761,6 +774,21 @@ import Footer from '../components/Footer.astro';
 
 	.cta p {
 		color: white;
+	}
+
+	/* Video Section */
+	.video-container {
+		max-width: 900px;
+		margin: 0 auto;
+		background: white;
+		border: 3px solid var(--primary);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+		overflow: hidden;
+	}
+
+	.video-container video {
+		width: 100%;
+		display: block;
 	}
 
 	/* Responsive */

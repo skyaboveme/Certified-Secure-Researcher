@@ -1,4 +1,6 @@
 ---
+import Chatbot from '../components/Chatbot.astro';
+
 interface Props {
 	title: string;
 	description?: string;
@@ -96,6 +98,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 	</head>
 	<body>
 		<slot />
+		<Chatbot />
 	</body>
 </html>
 

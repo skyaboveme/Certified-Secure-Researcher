@@ -1,0 +1,607 @@
+---
+// Chatbot component for CSR website
+---
+
+<div id="chatbot-container" class="chatbot-container">
+	<button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open chat assistant">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+		</svg>
+		<span class="chat-badge">Ask us!</span>
+	</button>
+
+	<div id="chatbot-window" class="chatbot-window">
+		<div class="chatbot-header">
+			<div class="chatbot-header-content">
+				<div class="chatbot-avatar">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M12 2v20M2 12h20"/>
+					</svg>
+				</div>
+				<div class="chatbot-title">
+					<h3>CSR Assistant</h3>
+					<p>Ask about certification</p>
+				</div>
+			</div>
+			<button id="chatbot-close" class="chatbot-close-btn" aria-label="Close chat">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				</svg>
+			</button>
+		</div>
+
+		<div id="chatbot-messages" class="chatbot-messages">
+			<div class="message bot-message">
+				<div class="message-avatar">🤖</div>
+				<div class="message-content">
+					<p>Hello! I'm the CSR Assistant. I can help answer questions about:</p>
+					<ul>
+						<li>What CSR certification is</li>
+						<li>Who needs certification</li>
+						<li>The certification process</li>
+						<li>Pricing and institutional licenses</li>
+						<li>Federal compliance requirements</li>
+					</ul>
+					<p>How can I help you today?</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="chatbot-quick-questions">
+			<button class="quick-question" data-question="What is CSR certification?">What is CSR?</button>
+			<button class="quick-question" data-question="How long does certification take?">How long?</button>
+			<button class="quick-question" data-question="Who needs CSR certification?">Who needs it?</button>
+		</div>
+
+		<div class="chatbot-input-container">
+			<input
+				type="text"
+				id="chatbot-input"
+				class="chatbot-input"
+				placeholder="Type your question..."
+				aria-label="Chat message input"
+			/>
+			<button id="chatbot-send" class="chatbot-send-btn" aria-label="Send message">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<line x1="22" y1="2" x2="11" y2="13"></line>
+					<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+				</svg>
+			</button>
+		</div>
+	</div>
+</div>
+
+<style>
+	.chatbot-container {
+		position: fixed;
+		bottom: 2rem;
+		right: 2rem;
+		z-index: 9999;
+	}
+
+	.chatbot-toggle {
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		background: var(--primary);
+		color: white;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		transition: all 0.3s;
+		position: relative;
+	}
+
+	.chatbot-toggle:hover {
+		background: var(--primary-dark);
+		transform: scale(1.1);
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+	}
+
+	.chat-badge {
+		position: absolute;
+		top: -8px;
+		right: -8px;
+		background: var(--accent);
+		color: var(--dark);
+		padding: 0.25rem 0.5rem;
+		border-radius: 12px;
+		font-size: 0.75rem;
+		font-weight: 700;
+		white-space: nowrap;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.chatbot-window {
+		position: fixed;
+		bottom: 100px;
+		right: 2rem;
+		width: 380px;
+		height: 550px;
+		background: white;
+		border-radius: 12px;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+		display: none;
+		flex-direction: column;
+		overflow: hidden;
+		border: 2px solid var(--primary);
+	}
+
+	.chatbot-window.open {
+		display: flex;
+		animation: slideUp 0.3s ease-out;
+	}
+
+	@keyframes slideUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.chatbot-header {
+		background: var(--primary);
+		color: white;
+		padding: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.chatbot-header-content {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.chatbot-avatar {
+		width: 40px;
+		height: 40px;
+		background: var(--accent);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--dark);
+	}
+
+	.chatbot-title h3 {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 700;
+		color: white;
+	}
+
+	.chatbot-title p {
+		margin: 0;
+		font-size: 0.75rem;
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.chatbot-close-btn {
+		background: transparent;
+		border: none;
+		color: white;
+		cursor: pointer;
+		padding: 0.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 4px;
+		transition: background 0.2s;
+	}
+
+	.chatbot-close-btn:hover {
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	.chatbot-messages {
+		flex: 1;
+		overflow-y: auto;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		background: #f8f9fa;
+	}
+
+	.message {
+		display: flex;
+		gap: 0.75rem;
+		animation: fadeIn 0.3s ease-out;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.message-avatar {
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.25rem;
+		flex-shrink: 0;
+	}
+
+	.message-content {
+		background: white;
+		padding: 0.75rem 1rem;
+		border-radius: 12px;
+		max-width: 80%;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	}
+
+	.message-content p {
+		margin: 0 0 0.5rem 0;
+		color: var(--dark);
+		line-height: 1.5;
+		font-size: 0.9375rem;
+	}
+
+	.message-content p:last-child {
+		margin-bottom: 0;
+	}
+
+	.message-content ul {
+		margin: 0.5rem 0;
+		padding-left: 1.25rem;
+	}
+
+	.message-content li {
+		color: var(--gray);
+		font-size: 0.875rem;
+		line-height: 1.6;
+	}
+
+	.user-message {
+		flex-direction: row-reverse;
+	}
+
+	.user-message .message-content {
+		background: var(--primary);
+		color: white;
+		margin-left: auto;
+	}
+
+	.user-message .message-content p {
+		color: white;
+	}
+
+	.user-message .message-avatar {
+		background: var(--accent);
+	}
+
+	.chatbot-quick-questions {
+		padding: 0.75rem 1rem;
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		background: white;
+		border-top: 1px solid var(--light-gray);
+	}
+
+	.quick-question {
+		padding: 0.5rem 0.75rem;
+		background: var(--bg);
+		border: 1px solid var(--light-gray);
+		border-radius: 16px;
+		font-size: 0.8125rem;
+		cursor: pointer;
+		transition: all 0.2s;
+		color: var(--dark);
+		font-weight: 500;
+	}
+
+	.quick-question:hover {
+		background: var(--primary);
+		color: white;
+		border-color: var(--primary);
+	}
+
+	.chatbot-input-container {
+		display: flex;
+		padding: 1rem;
+		gap: 0.5rem;
+		background: white;
+		border-top: 2px solid var(--light-gray);
+	}
+
+	.chatbot-input {
+		flex: 1;
+		padding: 0.75rem;
+		border: 2px solid var(--light-gray);
+		border-radius: 8px;
+		font-size: 0.9375rem;
+		font-family: inherit;
+	}
+
+	.chatbot-input:focus {
+		outline: none;
+		border-color: var(--primary);
+	}
+
+	.chatbot-send-btn {
+		width: 44px;
+		height: 44px;
+		background: var(--primary);
+		color: white;
+		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s;
+	}
+
+	.chatbot-send-btn:hover {
+		background: var(--primary-dark);
+		transform: scale(1.05);
+	}
+
+	.chatbot-send-btn:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	.typing-indicator {
+		display: flex;
+		gap: 0.25rem;
+		padding: 0.75rem 1rem;
+	}
+
+	.typing-dot {
+		width: 8px;
+		height: 8px;
+		background: var(--gray);
+		border-radius: 50%;
+		animation: typing 1.4s infinite;
+	}
+
+	.typing-dot:nth-child(2) {
+		animation-delay: 0.2s;
+	}
+
+	.typing-dot:nth-child(3) {
+		animation-delay: 0.4s;
+	}
+
+	@keyframes typing {
+		0%, 60%, 100% {
+			transform: translateY(0);
+			opacity: 0.7;
+		}
+		30% {
+			transform: translateY(-10px);
+			opacity: 1;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.chatbot-container {
+			bottom: 1rem;
+			right: 1rem;
+		}
+
+		.chatbot-window {
+			right: 1rem;
+			bottom: 80px;
+			width: calc(100vw - 2rem);
+			max-width: 380px;
+		}
+	}
+</style>
+
+<script>
+	// Knowledge base for the chatbot
+	const knowledgeBase = {
+		"what is csr": {
+			answer: "CSR (Certified Secure Researcher™) is the official certification program that validates research security training. It links credentials directly to ORCiD identifiers for seamless compliance with federal funding requirements like NSPM-33.",
+			links: ["/about"]
+		},
+		"who needs": {
+			answer: "Three main groups need CSR certification:\n\n1. **Academic Institutions** - Universities managing research security and IP theft protection\n2. **Corporate Organizations** - Businesses protecting IP and trade secrets\n3. **Government Agencies** - Federal agencies implementing compliance requirements\n\nIndividual researchers working on federally-funded projects also need certification.",
+			links: ["/about#who-needs"]
+		},
+		"how long": {
+			answer: "Most researchers complete the training and assessment in 4-6 hours. You can work at your own pace. The average processing time for full certification is 10 days. The certification is valid for one year and requires annual renewal.",
+			links: ["/about"]
+		},
+		"process": {
+			answer: "The CSR certification process has 6 steps:\n\n1. Register for ORCiD ID\n2. Complete CSR Application\n3. Submit Payment\n4. Schedule Interview\n5. Attend Virtual Adjudication\n6. Receive CSR Number\n\nYou'll get your designation via email with an ORCiD profile badge.",
+			links: ["/about"]
+		},
+		"cost": {
+			answer: "CSR offers both individual certifications and institutional licenses with volume discounts. For specific pricing information and institutional packages, please contact our sales team.",
+			links: ["/contact"]
+		},
+		"orcid": {
+			answer: "ORCiD is a persistent digital identifier for researchers. CSR certification links directly to your ORCiD profile, making your security credentials portable across institutions and verifiable by funding agencies instantly.",
+			links: ["/blog/orcid-double-edged-sword"]
+		},
+		"nspm-33": {
+			answer: "NSPM-33 is a federal directive requiring research security training. CSR certification helps meet these requirements by providing standardized, verifiable training that funding agencies recognize and trust.",
+			links: ["/blog"]
+		},
+		"contact": {
+			answer: "You can reach us at:\n\n📧 Email: support@certifiedsecureresearcher.com\n💼 Sales: sales@certifiedsecureresearcher.com\n⏰ Hours: Monday-Friday, 9 AM - 5 PM EST\n\nEnterprise clients have 24/7 emergency support.",
+			links: ["/contact"]
+		},
+		"institutional": {
+			answer: "Yes! We offer institutional licenses with:\n- Volume discounts\n- Centralized management dashboards\n- Bulk enrollment tools\n- Dedicated account management\n- Priority support\n\nContact our sales team for custom packages.",
+			links: ["/contact"]
+		}
+	};
+
+	function findAnswer(question: string): { answer: string; links?: string[] } | null {
+		const lowerQuestion = question.toLowerCase();
+
+		for (const [key, value] of Object.entries(knowledgeBase)) {
+			if (lowerQuestion.includes(key)) {
+				return value;
+			}
+		}
+
+		return null;
+	}
+
+	function addMessage(content: string, isUser = false, links?: string[]) {
+		const messagesContainer = document.getElementById('chatbot-messages');
+		if (!messagesContainer) return;
+
+		const messageDiv = document.createElement('div');
+		messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+
+		const avatar = document.createElement('div');
+		avatar.className = 'message-avatar';
+		avatar.textContent = isUser ? '👤' : '🤖';
+
+		const messageContent = document.createElement('div');
+		messageContent.className = 'message-content';
+
+		// Convert newlines to paragraphs
+		const paragraphs = content.split('\n\n').filter(p => p.trim());
+		paragraphs.forEach(paragraph => {
+			if (paragraph.includes('**')) {
+				// Handle bold text
+				const parts = paragraph.split('**');
+				const p = document.createElement('p');
+				parts.forEach((part, index) => {
+					if (index % 2 === 1) {
+						const strong = document.createElement('strong');
+						strong.textContent = part;
+						p.appendChild(strong);
+					} else {
+						p.appendChild(document.createTextNode(part));
+					}
+				});
+				messageContent.appendChild(p);
+			} else {
+				const p = document.createElement('p');
+				p.textContent = paragraph;
+				messageContent.appendChild(p);
+			}
+		});
+
+		if (links && links.length > 0) {
+			const linksP = document.createElement('p');
+			linksP.innerHTML = `<strong>Learn more:</strong> ${links.map(link => `<a href="${link}" style="color: var(--primary); text-decoration: underline;">View details</a>`).join(', ')}`;
+			messageContent.appendChild(linksP);
+		}
+
+		messageDiv.appendChild(avatar);
+		messageDiv.appendChild(messageContent);
+		messagesContainer.appendChild(messageDiv);
+
+		// Scroll to bottom
+		messagesContainer.scrollTop = messagesContainer.scrollHeight;
+	}
+
+	function showTypingIndicator() {
+		const messagesContainer = document.getElementById('chatbot-messages');
+		if (!messagesContainer) return;
+
+		const typingDiv = document.createElement('div');
+		typingDiv.className = 'message bot-message typing-indicator-message';
+		typingDiv.innerHTML = `
+			<div class="message-avatar">🤖</div>
+			<div class="message-content typing-indicator">
+				<div class="typing-dot"></div>
+				<div class="typing-dot"></div>
+				<div class="typing-dot"></div>
+			</div>
+		`;
+		messagesContainer.appendChild(typingDiv);
+		messagesContainer.scrollTop = messagesContainer.scrollHeight;
+	}
+
+	function removeTypingIndicator() {
+		const typingIndicator = document.querySelector('.typing-indicator-message');
+		if (typingIndicator) {
+			typingIndicator.remove();
+		}
+	}
+
+	function handleSendMessage() {
+		const input = document.getElementById('chatbot-input') as HTMLInputElement;
+		if (!input || !input.value.trim()) return;
+
+		const question = input.value.trim();
+		addMessage(question, true);
+		input.value = '';
+
+		// Show typing indicator
+		showTypingIndicator();
+
+		// Simulate thinking delay
+		setTimeout(() => {
+			removeTypingIndicator();
+
+			const result = findAnswer(question);
+			if (result) {
+				addMessage(result.answer, false, result.links);
+			} else {
+				addMessage(
+					"I'm not sure about that specific question. Here's what I can help with:\n\n• CSR certification details\n• Who needs certification\n• The certification process\n• Pricing and institutional licenses\n• Federal compliance (NSPM-33)\n\nYou can also contact our team directly for personalized assistance.",
+					false,
+					["/contact"]
+				);
+			}
+		}, 1000);
+	}
+
+	// Initialize chatbot
+	document.addEventListener('DOMContentLoaded', () => {
+		const toggle = document.getElementById('chatbot-toggle');
+		const closeBtn = document.getElementById('chatbot-close');
+		const chatWindow = document.getElementById('chatbot-window');
+		const sendBtn = document.getElementById('chatbot-send');
+		const input = document.getElementById('chatbot-input') as HTMLInputElement;
+
+		toggle?.addEventListener('click', () => {
+			chatWindow?.classList.toggle('open');
+		});
+
+		closeBtn?.addEventListener('click', () => {
+			chatWindow?.classList.remove('open');
+		});
+
+		sendBtn?.addEventListener('click', handleSendMessage);
+
+		input?.addEventListener('keypress', (e) => {
+			if (e.key === 'Enter') {
+				handleSendMessage();
+			}
+		});
+
+		// Quick questions
+		const quickQuestions = document.querySelectorAll('.quick-question');
+		quickQuestions.forEach(btn => {
+			btn.addEventListener('click', () => {
+				const question = btn.getAttribute('data-question');
+				if (question && input) {
+					input.value = question;
+					handleSendMessage();
+				}
+			});
+		});
+	});
+</script>

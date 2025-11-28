@@ -12,7 +12,7 @@ interface Props {
 const {
 	title,
 	description = "Certified Secure Researcher™ (CSR) provides official research security certification linked to ORCiD identifiers. Streamline compliance with federal funding agency standards and institutional security requirements.",
-	image = "/Images/CSR.png",
+	image = "/logomain.png",
 	type = "website",
 	keywords = "research security, CSR certification, ORCiD, NSPM-33, research compliance, federal funding, intellectual property protection, research integrity, secure researcher certification"
 } = Astro.props;
@@ -25,7 +25,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/logomain.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
 
@@ -72,7 +72,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 			"name": "Certified Secure Researcher",
 			"alternateName": "CSR",
 			"url": "https://certifiedsecureresearcher.com",
-			"logo": "https://certifiedsecureresearcher.com/Images/CSR.png",
+			"logo": "https://certifiedsecureresearcher.com/logomain.png",
 			"description": "Official research security certification program linking researcher credentials to ORCiD identifiers for federal compliance.",
 			"foundingDate": "2024",
 			"areaServed": "Worldwide",

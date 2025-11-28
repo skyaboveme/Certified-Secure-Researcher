@@ -201,53 +201,6 @@ import Footer from '../components/Footer.astro';
 		</div>
 	</section>
 
-	<!-- Webinars Section -->
-	<section class="section bg-light">
-		<div class="container">
-			<h2 class="section-title">Upcoming Webinars</h2>
-			<div class="webinar-grid">
-				<div class="webinar-card">
-					<div class="webinar-date">
-						<span class="month">NOV</span>
-						<span class="day">20</span>
-					</div>
-					<div class="webinar-info">
-						<h4>Introduction to CSR Certification</h4>
-						<p>Learn the basics of the certification process and how to prepare your application.</p>
-						<span class="webinar-time">2:00 PM EST</span>
-						<a href="#" class="btn btn-secondary">Register</a>
-					</div>
-				</div>
-
-				<div class="webinar-card">
-					<div class="webinar-date">
-						<span class="month">DEC</span>
-						<span class="day">05</span>
-					</div>
-					<div class="webinar-info">
-						<h4>Advanced Compliance Strategies</h4>
-						<p>Deep dive into managing complex compliance requirements across multiple sponsors.</p>
-						<span class="webinar-time">1:00 PM EST</span>
-						<a href="#" class="btn btn-secondary">Register</a>
-					</div>
-				</div>
-
-				<div class="webinar-card">
-					<div class="webinar-date">
-						<span class="month">DEC</span>
-						<span class="day">12</span>
-					</div>
-					<div class="webinar-info">
-						<h4>Institutional Dashboard Deep Dive</h4>
-						<p>Maximize the value of your institutional dashboard with advanced features and reporting.</p>
-						<span class="webinar-time">3:00 PM EST</span>
-						<a href="#" class="btn btn-secondary">Register</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<!-- FAQ Section -->
 	<section class="section">
 		<div class="container">
@@ -478,68 +431,6 @@ import Footer from '../components/Footer.astro';
 		letter-spacing: 0.05em;
 	}
 
-	.webinar-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-		gap: 1.5rem;
-	}
-
-	.webinar-card {
-		background: white;
-		padding: 1.5rem;
-		border-radius: 0;
-		display: flex;
-		gap: 1.5rem;
-		border: 2px solid var(--light-gray);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-	}
-
-	.webinar-date {
-		background: var(--primary);
-		color: white;
-		padding: 1rem;
-		border-radius: 0;
-		text-align: center;
-		min-width: 80px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-
-	.webinar-date .month {
-		font-size: 0.8125rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-
-	.webinar-date .day {
-		font-size: 2rem;
-		font-weight: 700;
-		line-height: 1;
-	}
-
-	.webinar-info h4 {
-		font-size: 1rem;
-		margin-bottom: 0.5rem;
-		color: var(--dark);
-	}
-
-	.webinar-info p {
-		color: var(--gray);
-		font-size: 0.875rem;
-		margin-bottom: 0.75rem;
-		line-height: 1.5;
-	}
-
-	.webinar-time {
-		display: block;
-		color: var(--primary);
-		font-weight: 700;
-		font-size: 0.8125rem;
-		margin-bottom: 1rem;
-	}
-
 	.faq-list {
 		max-width: 800px;
 		margin: 0 auto;
@@ -622,16 +513,6 @@ import Footer from '../components/Footer.astro';
 
 		.resource-categories {
 			grid-template-columns: 1fr;
-		}
-
-		.webinar-card {
-			flex-direction: column;
-		}
-
-		.webinar-date {
-			flex-direction: row;
-			gap: 0.5rem;
-			justify-content: center;
 		}
 
 		.support-options {

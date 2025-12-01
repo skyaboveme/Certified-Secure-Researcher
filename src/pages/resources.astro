@@ -66,8 +66,109 @@ import Footer from '../components/Footer.astro';
 		</div>
 	</section>
 
-	<!-- Resource Categories -->
+	<!-- Blog Articles -->
 	<section class="section bg-light">
+		<div class="container">
+			<h2 class="section-title">Latest Articles</h2>
+			<div class="blog-grid">
+				<article class="blog-card featured">
+					<div class="blog-image">
+						<div class="placeholder-image">💰</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-meta">
+							<span class="blog-category">Risk Assessment</span>
+							<span class="blog-date">November 17, 2025</span>
+						</div>
+						<h3>The $44 Million Question: What's Your Research Security Blind Spot?</h3>
+						<p>Organizations saved $44 million by identifying security blind spots. Discover the 5 critical vulnerabilities costing research institutions millions.</p>
+						<a href="/blog/research-security-blind-spots" class="read-more">Read More →</a>
+					</div>
+				</article>
+
+				<article class="blog-card featured">
+					<div class="blog-image">
+						<div class="placeholder-image">🚨</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-meta">
+							<span class="blog-category">Research Security</span>
+							<span class="blog-date">November 17, 2025</span>
+						</div>
+						<h3>Why 73% of Research Organizations Discover IP Theft Too Late</h3>
+						<p>The devastating lag between crime and discovery transforms security incidents into existential crises. Learn how to break the late discovery cycle.</p>
+						<a href="/blog/ip-theft-late-discovery" class="read-more">Read More →</a>
+					</div>
+				</article>
+
+				<article class="blog-card featured">
+					<div class="blog-image">
+						<div class="placeholder-image">🔐</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-meta">
+							<span class="blog-category">Security Analysis</span>
+							<span class="blog-date">November 17, 2025</span>
+						</div>
+						<h3>ORCID: The Double-Edged Sword of Research Identity Management</h3>
+						<p>Streamlined credentials vs. strategic intelligence vulnerabilities—understanding the hidden risks of mandatory researcher identification systems.</p>
+						<a href="/blog/orcid-double-edged-sword" class="read-more">Read More →</a>
+					</div>
+				</article>
+
+				<article class="blog-card">
+					<div class="blog-image">
+						<div class="placeholder-image">📊</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-meta">
+							<span class="blog-category">Compliance</span>
+							<span class="blog-date">November 14, 2025</span>
+						</div>
+						<h3>Understanding NSPM-33 Requirements for Research Security</h3>
+						<p>A comprehensive guide to the new federal requirements and how CSR certification helps institutions stay compliant.</p>
+						<a href="/blog/understanding-nspm-33-requirements" class="read-more">Read More →</a>
+					</div>
+				</article>
+
+				<article class="blog-card">
+					<div class="blog-image">
+						<div class="placeholder-image">🔒</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-meta">
+							<span class="blog-category">Best Practices</span>
+							<span class="blog-date">November 10, 2025</span>
+						</div>
+						<h3>5 Steps to Streamline Your Research Security Training</h3>
+						<p>Learn how to efficiently track and manage security training across your research team.</p>
+						<a href="/blog/5-steps-streamline-research-security-training" class="read-more">Read More →</a>
+					</div>
+				</article>
+
+				<article class="blog-card">
+					<div class="blog-image">
+						<div class="placeholder-image">🌐</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-meta">
+							<span class="blog-category">Industry News</span>
+							<span class="blog-date">October 28, 2025</span>
+						</div>
+						<h3>ORCiD Integration: The Future of Researcher Verification</h3>
+						<p>Why linking credentials to ORCiD identifiers is becoming the gold standard in research security.</p>
+						<a href="/blog/orcid-integration-future-researcher-verification" class="read-more">Read More →</a>
+					</div>
+				</article>
+			</div>
+			<div class="view-all-articles">
+				<a href="/blog" class="btn btn-secondary">View All Articles →</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Resource Categories -->
+	<section class="section">
 		<div class="container">
 			<div class="resource-categories">
 				<div class="category-card">
@@ -506,12 +607,117 @@ import Footer from '../components/Footer.astro';
 		justify-content: center;
 	}
 
+	/* Blog Grid Styles */
+	.blog-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+
+	.blog-card {
+		background: white;
+		border-radius: 0;
+		overflow: hidden;
+		border: 2px solid var(--light-gray);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+	}
+
+	.blog-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+		border-color: var(--primary);
+	}
+
+	.blog-card.featured {
+		border-color: var(--accent);
+		border-width: 3px;
+	}
+
+	.blog-card.featured:hover {
+		border-color: var(--primary);
+	}
+
+	.blog-image {
+		background: var(--bg);
+		height: 180px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-bottom: 2px solid var(--light-gray);
+	}
+
+	.placeholder-image {
+		font-size: 3.5rem;
+	}
+
+	.blog-content {
+		padding: 1.5rem;
+	}
+
+	.blog-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1rem;
+		font-size: 0.8125rem;
+	}
+
+	.blog-category {
+		background: var(--primary);
+		color: white;
+		padding: 0.25rem 0.75rem;
+		border-radius: 0;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.blog-date {
+		color: var(--gray);
+		font-weight: 600;
+	}
+
+	.blog-content h3 {
+		font-size: 1.125rem;
+		margin-bottom: 0.75rem;
+		color: var(--dark);
+		line-height: 1.4;
+	}
+
+	.blog-content p {
+		color: var(--gray);
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.read-more {
+		color: var(--primary);
+		font-weight: 700;
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+
+	.read-more:hover {
+		color: var(--primary-dark);
+		text-decoration: underline;
+	}
+
+	.view-all-articles {
+		text-align: center;
+		margin-top: 2rem;
+	}
+
 	@media (max-width: 768px) {
 		.page-hero h2 {
 			font-size: 2rem;
 		}
 
 		.resource-categories {
+			grid-template-columns: 1fr;
+		}
+
+		.blog-grid {
 			grid-template-columns: 1fr;
 		}
 

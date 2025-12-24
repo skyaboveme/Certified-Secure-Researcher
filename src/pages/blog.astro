@@ -1,7 +1,27 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const allPosts = await getCollection("blog");
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categoryEmojis: Record<string, string> = {
+	"Risk Assessment": "💰",
+	"Research Security": "🚨",
+	"Security Analysis": "🔐",
+	Compliance: "📊",
+	"Best Practices": "🔒",
+	"Industry News": "🌐",
+	Guidelines: "📋",
+	Tips: "💡",
+	General: "📝",
+};
+
+function getEmoji(category: string) {
+	return categoryEmojis[category] || "📝";
+}
 ---
 
 <BaseLayout
@@ -16,7 +36,10 @@ import Footer from '../components/Footer.astro';
 	<section class="page-hero">
 		<div class="container">
 			<h2>Research Security Blog</h2>
-			<p>Official updates on research security compliance, regulatory changes, and certification best practices</p>
+			<p>
+				Official updates on research security compliance, regulatory
+				changes, and certification best practices
+			</p>
 		</div>
 	</section>
 
@@ -24,126 +47,42 @@ import Footer from '../components/Footer.astro';
 	<section class="section">
 		<div class="container">
 			<div class="blog-grid">
-				<article class="blog-card featured">
-					<div class="blog-image">
-						<div class="placeholder-image">💰</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Risk Assessment</span>
-							<span class="blog-date">November 17, 2025</span>
-						</div>
-						<h3>The $44 Million Question: What's Your Research Security Blind Spot?</h3>
-						<p>Organizations saved $44 million by identifying security blind spots. Discover the 5 critical vulnerabilities costing research institutions millions.</p>
-						<a href="/blog/research-security-blind-spots" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card featured">
-					<div class="blog-image">
-						<div class="placeholder-image">🚨</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Research Security</span>
-							<span class="blog-date">November 17, 2025</span>
-						</div>
-						<h3>Why 73% of Research Organizations Discover IP Theft Too Late</h3>
-						<p>The devastating lag between crime and discovery transforms security incidents into existential crises. Learn how to break the late discovery cycle.</p>
-						<a href="/blog/ip-theft-late-discovery" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card featured">
-					<div class="blog-image">
-						<div class="placeholder-image">🔐</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Security Analysis</span>
-							<span class="blog-date">November 17, 2025</span>
-						</div>
-						<h3>ORCID: The Double-Edged Sword of Research Identity Management</h3>
-						<p>Streamlined credentials vs. strategic intelligence vulnerabilities—understanding the hidden risks of mandatory researcher identification systems.</p>
-						<a href="/blog/orcid-double-edged-sword" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card">
-					<div class="blog-image">
-						<div class="placeholder-image">📊</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Compliance</span>
-							<span class="blog-date">November 14, 2025</span>
-						</div>
-						<h3>Understanding NSPM-33 Requirements for Research Security</h3>
-						<p>A comprehensive guide to the new federal requirements and how CSR certification helps institutions stay compliant.</p>
-						<a href="/blog/understanding-nspm-33-requirements" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card">
-					<div class="blog-image">
-						<div class="placeholder-image">🔒</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Best Practices</span>
-							<span class="blog-date">November 10, 2025</span>
-						</div>
-						<h3>5 Steps to Streamline Your Research Security Training</h3>
-						<p>Learn how to efficiently track and manage security training across your research team.</p>
-						<a href="/blog/5-steps-streamline-research-security-training" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-
-				<article class="blog-card">
-					<div class="blog-image">
-						<div class="placeholder-image">🌐</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Industry News</span>
-							<span class="blog-date">October 28, 2025</span>
-						</div>
-						<h3>ORCiD Integration: The Future of Researcher Verification</h3>
-						<p>Why linking credentials to ORCiD identifiers is becoming the gold standard in research security.</p>
-						<a href="/blog/orcid-integration-future-researcher-verification" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card">
-					<div class="blog-image">
-						<div class="placeholder-image">📋</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Guidelines</span>
-							<span class="blog-date">October 20, 2025</span>
-						</div>
-						<h3>Preparing Your Institution for Research Security Audits</h3>
-						<p>Essential checklist and strategies for successful compliance audits.</p>
-						<a href="/blog/preparing-institution-research-security-audits" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card">
-					<div class="blog-image">
-						<div class="placeholder-image">💡</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Tips</span>
-							<span class="blog-date">October 15, 2025</span>
-						</div>
-						<h3>Common Mistakes in Research Security Applications</h3>
-						<p>Avoid these pitfalls to ensure a smooth certification process.</p>
-						<a href="/blog/common-mistakes-research-security-applications" class="read-more">Read More →</a>
-					</div>
-				</article>
+				{
+					allPosts.map((post) => (
+						<article class="blog-card">
+							<div class="blog-image">
+								<div class="placeholder-image">
+									{getEmoji(post.data.category)}
+								</div>
+							</div>
+							<div class="blog-content">
+								<div class="blog-meta">
+									<span class="blog-category">
+										{post.data.category}
+									</span>
+									<span class="blog-date">
+										{post.data.pubDate.toLocaleDateString(
+											"en-US",
+											{
+												year: "numeric",
+												month: "long",
+												day: "numeric",
+											},
+										)}
+									</span>
+								</div>
+								<h3>{post.data.title}</h3>
+								<p>{post.data.description}</p>
+								<a
+									href={`/blog/${post.slug}`}
+									class="read-more"
+								>
+									Read More →
+								</a>
+							</div>
+						</article>
+					))
+				}
 			</div>
 		</div>
 	</section>
@@ -153,10 +92,19 @@ import Footer from '../components/Footer.astro';
 		<div class="container">
 			<div class="newsletter-box">
 				<h3>Subscribe to Updates</h3>
-				<p>Receive official notifications on research security compliance changes and certification updates.</p>
+				<p>
+					Receive official notifications on research security
+					compliance changes and certification updates.
+				</p>
 				<form class="newsletter-form">
-					<input type="email" placeholder="Enter your institutional email" required />
-					<button type="submit" class="btn btn-primary">Subscribe</button>
+					<input
+						type="email"
+						placeholder="Enter your institutional email"
+						required
+					/>
+					<button type="submit" class="btn btn-primary"
+						>Subscribe</button
+					>
 				</form>
 			</div>
 		</div>
@@ -207,7 +155,12 @@ import Footer from '../components/Footer.astro';
 		overflow: hidden;
 		border: 2px solid var(--light-gray);
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-		transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+		transition:
+			transform 0.3s,
+			box-shadow 0.3s,
+			border-color 0.3s;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.blog-card:hover {
@@ -240,6 +193,9 @@ import Footer from '../components/Footer.astro';
 
 	.blog-content {
 		padding: 1.5rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.blog-meta {
@@ -276,6 +232,7 @@ import Footer from '../components/Footer.astro';
 		color: var(--gray);
 		line-height: 1.6;
 		margin-bottom: 1rem;
+		flex: 1;
 	}
 
 	.read-more {
@@ -283,6 +240,8 @@ import Footer from '../components/Footer.astro';
 		font-weight: 700;
 		text-decoration: none;
 		transition: color 0.2s;
+		display: inline-block;
+		margin-top: auto;
 	}
 
 	.read-more:hover {

@@ -1,0 +1,376 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+const { slug } = Astro.params;
+if (!slug) {
+    throw new Error("Slug is required");
+}
+const entry = await getEntry("blog", slug);
+if (!entry) {
+    return Astro.redirect("/404");
+}
+const { Content } = await entry.render();
+---
+
+<BaseLayout
+    title={entry.data.title}
+    description={entry.data.description}
+    type="article"
+>
+    <Header currentPage="blog" />
+    <article class="post-article">
+        <div class="container">
+            <header class="post-header">
+                <div class="post-meta">
+                    <span class="post-category">{entry.data.category}</span>
+                    <span class="post-date"
+                        >{
+                            entry.data.pubDate.toLocaleDateString("en-US", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })
+                        }</span
+                    >
+                </div>
+                <h1>{entry.data.title}</h1>
+                {
+                    entry.data.subtitle && (
+                        <p class="post-subtitle">{entry.data.subtitle}</p>
+                    )
+                }
+            </header>
+            <div class="post-content"><Content /></div>
+            <div class="post-footer">
+                <div class="author-info">
+                    <strong>Author:</strong>
+                    {entry.data.author}
+                </div>
+                {
+                    entry.data.tags && (
+                        <div class="post-tags">
+                            {entry.data.tags.map((tag: string) => (
+                                <span class="tag">{tag}</span>
+                            ))}
+                        </div>
+                    )
+                }
+                <a href="/blog" class="back-link">← Back to Blog</a>
+            </div>
+        </div>
+    </article>
+    <Footer />
+</BaseLayout>
+<style is:global>
+    /* Article Structure */
+    .post-article {
+        padding: 4rem 0;
+    }
+    .post-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .post-meta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9375rem;
+    }
+    .post-category {
+        background: var(--primary);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .post-date {
+        color: var(--gray);
+        font-weight: 600;
+    }
+    .post-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--dark);
+        line-height: 1.2;
+    }
+    .post-subtitle {
+        font-size: 1.25rem;
+        color: var(--gray);
+        line-height: 1.5;
+    }
+    .post-content {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: var(--dark);
+    } /* Common Content Elements */
+    .post-content h2 {
+        font-size: 1.875rem;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+        border-left: 4px solid var(--accent);
+        padding-left: 1rem;
+    }
+    .post-content h3 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+    .post-content p {
+        margin-bottom: 1.5rem;
+    }
+    .post-content ul,
+    .post-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    .post-content li {
+        margin-bottom: 0.5rem;
+    }
+    .post-content strong {
+        font-weight: 700;
+        color: var(--primary-dark);
+    } /* Component: Intro Section */
+    .intro-section {
+        background: var(--bg);
+        padding: 2rem;
+        border-left: 4px solid var(--primary);
+        margin-bottom: 3rem;
+    }
+    .lead {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: var(--dark);
+    } /* Component: Highlight Box */
+    .highlight-box {
+        background: var(--light-gray);
+        padding: 1.5rem;
+        border-radius: 0;
+        margin: 2rem 0;
+        border-left: 4px solid var(--dark);
+    }
+    .highlight-box p {
+        margin-bottom: 0;
+    } /*
+Component: Steps */
+    .step-item {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        background: white;
+        padding: 1.5rem;
+        border: 1px solid var(--light-gray);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    .step-number {
+        background: var(--primary);
+        color: white;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        flex-shrink: 0;
+    } /* Component: Grids */
+    .factor-grid,
+    .pillar-grid,
+    .agency-grid,
+    .consequences-grid,
+    .best-practice-grid,
+    .benefit-row,
+    .cost-grid,
+    .impact-grid,
+    .problem-grid,
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+    } /* Component: Cards */
+    .factor-item,
+    .pillar-card,
+    .blind-spot-card,
+    .finding-card,
+    .practice-card,
+    .mistake-card,
+    .reason-card {
+        background: var(--bg);
+        padding: 1.5rem;
+        border: 2px solid var(--light-gray);
+    }
+    .blind-spot-card {
+        display: flex;
+        gap: 1.5rem;
+    }
+    .blind-spot-number {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--light-gray);
+        line-height: 1;
+    } /*
+Component: Timeline */
+    .timeline {
+        position: relative;
+        margin: 2rem 0;
+        padding-left: 2rem;
+        border-left: 3px solid var(--primary);
+    }
+    .timeline-item {
+        position: relative;
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -2.35rem;
+        top: 0.5rem;
+        width: 14px;
+        height: 14px;
+        background: var(--primary);
+        border: 3px solid white;
+        box-shadow: 0 0 0 3px var(--primary);
+    }
+    .timeline-marker {
+        background: var(--primary);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+    .timeline-content {
+        background: var(--bg);
+        padding: 1rem;
+    } /* Component:
+Checklists */
+    .checklist-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        background: var(--bg);
+        padding: 1rem;
+        border-left: 3px solid var(--success);
+    }
+    .check-icon {
+        color: var(--success);
+        font-weight: 700;
+    } /* Component: CTA
+Section */
+    .cta-section {
+        background: var(--bg);
+        padding: 2.5rem;
+        margin-top: 4rem;
+        border: 3px solid var(--primary);
+        text-align: center;
+    }
+    .cta-section h2 {
+        border-left: none;
+        padding-left: 0;
+        color: var(--primary);
+        margin-top: 0;
+    }
+    .cta-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+    .cta-buttons .btn {
+        padding: 0.75rem 1.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .cta-buttons .btn-primary {
+        background: var(--primary);
+        color: white;
+    }
+    .cta-buttons .btn-secondary {
+        border: 2px solid var(--primary);
+        color: var(--primary);
+        background: white;
+    } /* Footer */
+    .post-footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 2px solid var(--light-gray);
+    }
+    .author-info {
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+    }
+    .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+    .tag {
+        background: var(--light-gray);
+        color: var(--dark);
+        padding: 0.25rem 0.75rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+    }
+    .back-link {
+        color: var(--primary);
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+    } /* Specific styles for lists */
+    .solution-list,
+    .threat-list,
+    .mandate-list {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .solution-item,
+    .threat-item {
+        background: var(--bg);
+        padding: 1.5rem;
+        border-left: 4px solid var(--accent);
+    }
+    @media (max-width: 768px) {
+        .post-header h1 {
+            font-size: 2rem;
+        }
+        .post-content {
+            padding: 0 1rem;
+        }
+        .blind-spot-card {
+            flex-direction: column;
+        }
+        .timeline {
+            padding-left: 1.5rem;
+        }
+        .cta-buttons {
+            flex-direction: column;
+        }
+        .cta-buttons .btn {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>

@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <BaseLayout
@@ -15,11 +15,15 @@ import Footer from '../components/Footer.astro';
 			<div class="error-content">
 				<div class="error-code">404</div>
 				<h1>Page Not Found</h1>
-				<p>The page you're looking for doesn't exist or has been moved.</p>
+				<p>
+					The page you're looking for doesn't exist or has been moved.
+				</p>
 
 				<div class="error-actions">
 					<a href="/" class="btn btn-primary">Return Home</a>
-					<a href="/contact" class="btn btn-secondary">Contact Support</a>
+					<a href="/contact" class="btn btn-secondary"
+						>Contact Support</a
+					>
 				</div>
 
 				<div class="helpful-links">
@@ -28,7 +32,10 @@ import Footer from '../components/Footer.astro';
 						<a href="/about">About CSR</a>
 						<a href="/blog">Blog</a>
 						<a href="/resources">Resources</a>
-						<a href="/signup">Get Certified</a>
+						<a
+							href="https://app.certifiedsecureresearcher.com/signup"
+							>Get Certified</a
+						>
 					</div>
 				</div>
 			</div>
@@ -60,7 +67,7 @@ import Footer from '../components/Footer.astro';
 		color: var(--primary);
 		line-height: 1;
 		margin-bottom: 1rem;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Space Grotesk", sans-serif;
 	}
 
 	.error-content h1 {

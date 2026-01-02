@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <BaseLayout title="Login - Certified Secure Researcher™">
@@ -18,25 +18,43 @@ import Footer from '../components/Footer.astro';
 					<form class="login-form">
 						<div class="form-group">
 							<label for="email">Email Address</label>
-							<input type="email" id="email" name="email" required placeholder="your.email@institution.edu">
+							<input
+								type="email"
+								id="email"
+								name="email"
+								required
+								placeholder="your.email@institution.edu"
+							/>
 						</div>
 
 						<div class="form-group">
 							<label for="password">Password</label>
-							<input type="password" id="password" name="password" required placeholder="Enter your password">
+							<input
+								type="password"
+								id="password"
+								name="password"
+								required
+								placeholder="Enter your password"
+							/>
 						</div>
 
 						<div class="form-options">
 							<label class="checkbox-label">
-								<input type="checkbox" name="remember">
+								<input type="checkbox" name="remember" />
 								<span>Remember me</span>
 							</label>
 							<a href="#" class="forgot-link">Forgot password?</a>
 						</div>
 
-						<button type="submit" class="btn btn-primary btn-large">Log In</button>
+						<button type="submit" class="btn btn-primary btn-large"
+							>Log In</button
+						>
 
-						<p class="signup-link">Don't have an account? <a href="/signup">Apply here</a></p>
+						<p class="signup-link">
+							Don't have an account? <a
+								href="https://app.certifiedsecureresearcher.com/signup"
+								>Apply here</a>
+						</p>
 					</form>
 				</div>
 			</div>

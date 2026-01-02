@@ -3,7 +3,7 @@ interface Props {
 	currentPage?: string;
 }
 
-const { currentPage = '' } = Astro.props;
+const { currentPage = "" } = Astro.props;
 ---
 
 <header class="site-header">
@@ -12,17 +12,52 @@ const { currentPage = '' } = Astro.props;
 			<a href="/" class="logo">
 				<img src="/logomain.png" alt="Certified Secure Researcher™" />
 				<div class="logo-text">
-					<span class="logo-title">Certified Secure Researcher<sup>™</sup></span>
-					<span class="logo-subtitle">Research Security Certification</span>
+					<span class="logo-title"
+						>Certified Secure Researcher<sup>™</sup></span
+					>
+					<span class="logo-subtitle"
+						>Research Security Certification</span
+					>
 				</div>
 			</a>
-			<nav class="main-nav" role="navigation" aria-label="Main navigation">
-				<a href="/" class:list={[{ active: currentPage === 'home' }]}>Home</a>
-				<a href="/about" class:list={[{ active: currentPage === 'about' }]}>About</a>
-				<a href="/resources" class:list={[{ active: currentPage === 'resources' || currentPage === 'blog' }]}>Resources</a>
-				<a href="/community" class:list={[{ active: currentPage === 'community' }]}>Community</a>
-				<a href="/login" class:list={['nav-login', { active: currentPage === 'login' }]}>Login</a>
-				<a href="/signup" class="btn btn-primary">Apply Now</a>
+			<nav
+				class="main-nav"
+				role="navigation"
+				aria-label="Main navigation"
+			>
+				<a href="/" class:list={[{ active: currentPage === "home" }]}
+					>Home</a
+				>
+				<a
+					href="/about"
+					class:list={[{ active: currentPage === "about" }]}>About</a
+				>
+				<a
+					href="/resources"
+					class:list={[
+						{
+							active:
+								currentPage === "resources" ||
+								currentPage === "blog",
+						},
+					]}>Resources</a
+				>
+				<a
+					href="/community"
+					class:list={[{ active: currentPage === "community" }]}
+					>Community</a
+				>
+				<a
+					href="https://app.certifiedsecureresearcher.com/login"
+					class:list={[
+						"nav-login",
+						{ active: currentPage === "login" },
+					]}>Login</a
+				>
+				<a
+					href="https://app.certifiedsecureresearcher.com/signup"
+					class="btn btn-primary">Apply Now</a
+				>
 			</nav>
 			<button class="mobile-menu-btn" aria-label="Toggle menu">
 				<span></span>
@@ -70,7 +105,7 @@ const { currentPage = '' } = Astro.props;
 	}
 
 	.logo-title {
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Space Grotesk", sans-serif;
 		font-size: 1.375rem;
 		font-weight: 700;
 		color: var(--primary);
@@ -214,10 +249,10 @@ const { currentPage = '' } = Astro.props;
 </style>
 
 <script>
-	const menuBtn = document.querySelector('.mobile-menu-btn');
-	const mainNav = document.querySelector('.main-nav');
+	const menuBtn = document.querySelector(".mobile-menu-btn");
+	const mainNav = document.querySelector(".main-nav");
 
-	menuBtn?.addEventListener('click', () => {
-		mainNav?.classList.toggle('open');
+	menuBtn?.addEventListener("click", () => {
+		mainNav?.classList.toggle("open");
 	});
 </script>
